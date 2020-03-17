@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+  	<title>Comeback Corner: Get Your Passive Agression On</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%== csrf_metatag %>
+    <link rel="stylesheet" type="text/css" href="/main.bundle.css" />
+    <script type="text/javascript" src="/index.bundle.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" id="title-logo" href="/feed">Comeback Corner</a>
+        <a class="navbar-item is-hidden-desktop" href="/feed">Feed</a>
+        <a class="navbar-item is-hidden-desktop" href="/complaints/new">Post Your Own</a>
+      </div>
+
+      <div id="nav-start" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/feed">
+            Feed
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item is-hidden-mobile">
+            <div class="buttons">
+              <a href="/complaints/new" class="button is-light">
+                Post Your Own
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main id="app" class="hero is-dark is-fullheight">
+      <% if session[:message] %>
+        <article id="flash" class="message is-info is-fullwidth">
+          <div class="message-header">
+            <p><%== session.delete(:message) %></p>
+            <span id="flash-delete">
+              <button class="delete" aria-label="delete"></button>
+            </span>
+          </div>
+        </article>
+      <% end %>
+      <%== yield %>
+    </main>
+  </body>
+</html>
