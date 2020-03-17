@@ -1,8 +1,7 @@
+require "./config/initializers/roda_ext"
+
 class ComplaintsController < Roda
-  plugin :render, escape: true
-  plugin :sessions, secret: ENV["SESSION_SECRET"]
-  plugin :route_csrf
-  plugin :public
+  render_plugins
   
   route do |r|
     r.is do

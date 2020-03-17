@@ -13,21 +13,10 @@ require "pry"
 require "./controllers/complaints_controller"
 require "./jobs/mail_job"
 require "./models/complaint"
-
-class Roda
-  def set_time_zone(request)
-    session[:time_zone] ||= (
-      request.try(:location).try(:data).try(:fetch, "timezone", nil) ||
-      "America/Phoenix"
-    )
-  end
-end
+require "./config/initializers/roda_ext"
 
 class App < Roda # :nodoc:
-  plugin :render, escape: true
-  plugin :sessions, secret: ENV["SESSION_SECRET"]
-  plugin :route_csrf
-  plugin :public
+  render_plugins
 
   route do |r|
     r.public
