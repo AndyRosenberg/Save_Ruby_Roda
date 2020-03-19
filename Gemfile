@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.5.7"
 
 gem "roda"
-gem 'thin'
+gem 'agoo'
 gem "sinatra-activerecord"
 gem "pg"
 gem "rake"
