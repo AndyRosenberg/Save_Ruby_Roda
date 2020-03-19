@@ -1,7 +1,7 @@
 
 default: &default
   adapter: postgresql
-  pool: 1
+  pool: 5
   timeout: 5000
 
 development:
@@ -9,7 +9,7 @@ development:
   encoding: unicode
   database: comeback_corner_development
   host: localhost
-  pool: 1
+  pool: 5
   user: <%= ENV['PG_USER'] %>
   password: <%= ENV['PG_PW'] %>
 
@@ -18,7 +18,7 @@ test:
   encoding: unicode
   database: comeback_corner_test
   host: localhost
-  pool: 1
+  pool: 5
   user: <%= ENV['PG_USER'] %>
   password: <%= ENV['PG_PW'] %>
 
